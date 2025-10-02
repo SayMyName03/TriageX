@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useToast } from '@/hooks/use-toast';
+<<<<<<< HEAD
 import { Hospital, MapPin, RefreshCw } from "lucide-react";
+=======
+import { Hospital, MapPin, RefreshCw, CheckCircle } from "lucide-react";
+>>>>>>> master
 
 interface HospitalDoc {
   _id: string;
@@ -36,6 +40,12 @@ const NearestHospital = () => {
   const [selectedHospitalId,setSelectedHospitalId] = useState<string | null>(null);
   const [dispatchingId,setDispatchingId] = useState<string | null>(null);
   const [dispatchedIds,setDispatchedIds] = useState<Set<string>>(new Set());
+<<<<<<< HEAD
+=======
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [successHospital, setSuccessHospital] = useState<HospitalDoc | null>(null);
+  const [redirectUrl, setRedirectUrl] = useState<string>('');
+>>>>>>> master
   const { toast } = useToast();
 
   const currentTriage = React.useMemo(() => {
@@ -79,6 +89,38 @@ const NearestHospital = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gradient-to-br from-medical-50 via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-slate-900 p-8">
+<<<<<<< HEAD
+=======
+      {/* Success Animation Overlay */}
+      {showSuccess && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-md mx-4 text-center">
+            <div className="mb-4">
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto animate-bounce" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              Hospital Notified Successfully!
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              {successHospital?.name} has been notified of the emergency.
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Redirecting to Google Maps in 5 seconds...
+            </p>
+            <div className="mt-4 bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+              <div 
+                className="bg-green-500 h-2 rounded-full"
+                style={{ 
+                  width: '0%',
+                  animation: 'progressBar 5s linear forwards'
+                }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+>>>>>>> master
       <div className="w-full max-w-6xl">
         <h1 className="text-5xl font-extrabold mb-6 text-medical-800 dark:text-medical-100 tracking-tight drop-shadow-lg">Nearest Hospitals</h1>
         {currentTriage && currentTriage.patient && (
@@ -195,14 +237,34 @@ const NearestHospital = () => {
                                 sessionStorage.removeItem('currentTriage');
                                 setDispatchedIds(prev => new Set(prev).add(h._id));
                                 toast({ title: 'Hospital Notified', description: `${h.name} has been notified.` });
+<<<<<<< HEAD
+=======
+                                
+                                // Show success animation
+                                setSuccessHospital(h);
+                                setRedirectUrl(mapsUrl);
+                                setShowSuccess(true);
+                                
+                                // Redirect after 5 seconds
+                                setTimeout(() => {
+                                  window.location.href = mapsUrl;
+                                }, 5000);
+                                
+>>>>>>> master
                               } catch(e){
                                 console.error(e);
                                 toast({ title: 'Dispatch Failed', description: 'Could not notify hospital.', variant: 'destructive' });
                               } finally {
                                 setDispatchingId(null);
+<<<<<<< HEAD
                                 window.open(mapsUrl,'_blank','noopener,noreferrer');
                               }
                             } else {
+=======
+                              }
+                            } else {
+                              // For already dispatched hospitals, just open maps
+>>>>>>> master
                               window.open(mapsUrl,'_blank','noopener,noreferrer');
                             }
                           }}

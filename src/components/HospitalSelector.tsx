@@ -65,6 +65,10 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
   const [error, setError] = useState("");
   const [maxKm, setMaxKm] = useState(10);
   const [selectedHospital, setSelectedHospital] = useState<Hospital | null>(null);
+<<<<<<< HEAD
+=======
+  const [showSuccess, setShowSuccess] = useState(false);
+>>>>>>> master
   const { toast } = useToast();
 
   // Get nearby hospitals using Google Places API
@@ -189,11 +193,32 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
 
   const handleConfirmSelection = () => {
     if (selectedHospital) {
+<<<<<<< HEAD
       onHospitalSelected(selectedHospital, patientData);
+=======
+      // Show success animation
+      setShowSuccess(true);
+      
+      // Call the original callback
+      onHospitalSelected(selectedHospital, patientData);
+      
+      // Show toast
+>>>>>>> master
       toast({
         title: "Hospital Selected",
         description: `Alert will be sent to ${selectedHospital.name}`,
       });
+<<<<<<< HEAD
+=======
+
+      // Redirect to Google Maps after 5 seconds
+      setTimeout(() => {
+        const directionsUrl = getDirectionsUrl(selectedHospital);
+        if (directionsUrl !== '#') {
+          window.location.href = directionsUrl;
+        }
+      }, 5000);
+>>>>>>> master
     }
   };
 
@@ -206,6 +231,38 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-medical-50 via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-slate-900 p-8">
+<<<<<<< HEAD
+=======
+      {/* Success Animation Overlay */}
+      {showSuccess && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-xl max-w-md mx-4 text-center">
+            <div className="mb-4">
+              <CheckCircle className="w-16 h-16 text-green-500 mx-auto animate-bounce" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              Hospital Notified Successfully!
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              {selectedHospital?.name} has been notified of the emergency.
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Redirecting to Google Maps in 5 seconds...
+            </p>
+            <div className="mt-4 bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+              <div 
+                className="bg-green-500 h-2 rounded-full"
+                style={{ 
+                  width: '0%',
+                  animation: 'progressBar 5s linear forwards'
+                }}
+              ></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+>>>>>>> master
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

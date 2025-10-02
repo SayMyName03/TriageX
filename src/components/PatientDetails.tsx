@@ -17,6 +17,10 @@ import {
   MapPin,
   AlertTriangle,
   X,
+<<<<<<< HEAD
+=======
+  CheckCircle,
+>>>>>>> master
 } from "lucide-react";
 import { Patient } from "@/types/patient";
 import { cn } from "@/lib/utils";
@@ -27,6 +31,10 @@ interface PatientDetailsProps {
   isOpen: boolean;
   onClose: () => void;
   onReject: (patientId: string) => void;
+<<<<<<< HEAD
+=======
+  onAccept: (patientId: string) => void;
+>>>>>>> master
 }
 
 const PatientDetails: React.FC<PatientDetailsProps> = ({
@@ -34,6 +42,10 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
   isOpen,
   onClose,
   onReject,
+<<<<<<< HEAD
+=======
+  onAccept,
+>>>>>>> master
 }) => {
   if (!patient) return null;
 
@@ -70,6 +82,20 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
     }
   };
 
+<<<<<<< HEAD
+=======
+  const handleAccept = () => {
+    if (
+      confirm(
+        `Are you sure you want to accept patient ${patient.ticketNumber}?`
+      )
+    ) {
+      onAccept(patient.id);
+      onClose();
+    }
+  };
+
+>>>>>>> master
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -102,7 +128,11 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                   <div className="flex items-center space-x-2">
                     <Heart className="h-4 w-4 text-red-500" />
                     <div>
+<<<<<<< HEAD
                       <p className="text-sm text-muted-foreground">
+=======
+                      <p className="text-sm text-gray-600">
+>>>>>>> master
                         Heart Rate
                       </p>
                       <p className="font-semibold">
@@ -114,7 +144,11 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                   <div className="flex items-center space-x-2">
                     <Gauge className="h-4 w-4 text-blue-500" />
                     <div>
+<<<<<<< HEAD
                       <p className="text-sm text-muted-foreground">
+=======
+                      <p className="text-sm text-gray-600">
+>>>>>>> master
                         Blood Pressure
                       </p>
                       <p className="font-semibold">
@@ -127,7 +161,11 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                   <div className="flex items-center space-x-2">
                     <Wind className="h-4 w-4 text-green-500" />
                     <div>
+<<<<<<< HEAD
                       <p className="text-sm text-muted-foreground">
+=======
+                      <p className="text-sm text-gray-600">
+>>>>>>> master
                         O2 Saturation
                       </p>
                       <p className="font-semibold">
@@ -139,7 +177,11 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                   <div className="flex items-center space-x-2">
                     <Thermometer className="h-4 w-4 text-orange-500" />
                     <div>
+<<<<<<< HEAD
                       <p className="text-sm text-muted-foreground">
+=======
+                      <p className="text-sm text-gray-600">
+>>>>>>> master
                         Temperature
                       </p>
                       <p className="font-semibold">
@@ -149,8 +191,13 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                   </div>
                 </div>
 
+<<<<<<< HEAD
                 <div className="pt-2 border-t border-border">
                   <p className="text-sm text-muted-foreground">
+=======
+                <div className="pt-2 border-t border-gray-200">
+                  <p className="text-sm text-gray-600">
+>>>>>>> master
                     Respiratory Rate
                   </p>
                   <p className="font-semibold">
@@ -169,6 +216,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between">
+<<<<<<< HEAD
                   <span className="text-muted-foreground">
                     Expected Arrival:
                   </span>
@@ -176,6 +224,15 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">
+=======
+                  <span className="text-gray-600">
+                    Expected Arrival:
+                  </span>
+                  <span className="font-semibold text-gray-900">{patient.eta}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">
+>>>>>>> master
                     Patient Age/Gender:
                   </span>
                   <span className="font-semibold">
@@ -183,11 +240,19 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                   </span>
                 </div>
                 <div className="flex justify-between">
+<<<<<<< HEAD
                   <span className="text-muted-foreground">Ambulance Unit:</span>
                   <span className="font-semibold">{patient.ambulanceId}</span>
                 </div>
                 <div className="pt-2 border-t border-border">
                   <p className="text-sm text-muted-foreground">Condition</p>
+=======
+                  <span className="text-gray-600">Ambulance Unit:</span>
+                  <span className="font-semibold">{patient.ambulanceId}</span>
+                </div>
+                <div className="pt-2 border-t border-gray-200">
+                  <p className="text-sm text-gray-600">Condition</p>
+>>>>>>> master
                   <p className="font-semibold">{patient.condition}</p>
                 </div>
               </CardContent>
@@ -204,16 +269,27 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
+<<<<<<< HEAD
                 <div className="p-4 rounded-lg bg-blue-600 text-white shadow-md">
+=======
+                <div className="p-4 rounded-lg bg-gray-100 text-gray-900 shadow-sm">
+>>>>>>> master
                   <p className="text-xs uppercase tracking-wide opacity-80 mb-1">ETA (Minutes)</p>
                   <p className="text-4xl font-extrabold leading-none">
                     {patient.eta === '—' ? 'Pending' : patient.eta}
                   </p>
                 </div>
+<<<<<<< HEAD
                 <div className="text-sm text-muted-foreground">
                   The ETA is an approximate travel time from the dispatch origin to your hospital. Actual arrival may vary due to traffic and route conditions.
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
+=======
+                <div className="text-sm text-gray-600">
+                  The ETA is an approximate travel time from the dispatch origin to your hospital. Actual arrival may vary due to traffic and route conditions.
+                </div>
+                <div className="flex items-center gap-2 text-xs text-gray-600">
+>>>>>>> master
                   <MapPin className="h-3.5 w-3.5" />
                   <span>Origin details withheld (no live tracking enabled)</span>
                 </div>
@@ -223,7 +299,19 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
         </div>
 
         {/* Action Buttons */}
+<<<<<<< HEAD
         <div className="flex justify-end space-x-3 pt-4 border-t border-border">
+=======
+        <div className="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+          <Button
+            variant="default"
+            onClick={handleAccept}
+            className="flex items-center space-x-2 bg-green-600 hover:bg-green-700"
+          >
+            <CheckCircle className="h-4 w-4" />
+            <span>Accept Case</span>
+          </Button>
+>>>>>>> master
           <Button
             variant="destructive"
             onClick={handleReject}

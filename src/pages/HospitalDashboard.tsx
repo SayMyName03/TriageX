@@ -25,11 +25,50 @@ const HospitalDashboard: React.FC = () => {
 
   const [patients, setPatients] = useState<Patient[]>([]);
   const socketRef = useRef<any>(null);
+<<<<<<< HEAD
+=======
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+>>>>>>> master
   const [selectedPatient, setSelectedPatient] = React.useState<Patient | null>(
     null
   );
   const [modalOpen, setModalOpen] = React.useState(false);
 
+<<<<<<< HEAD
+=======
+  // Initialize emergency notification sound
+  useEffect(() => {
+    audioRef.current = new Audio('/mixkit-urgent-simple-tone-loop-2976.wav');
+    audioRef.current.volume = 0.7; // Set to 70% volume
+    audioRef.current.preload = 'auto';
+    audioRef.current.loop = true; // Loop the sound until manually stopped
+    
+    // Cleanup on unmount
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const playEmergencySound = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0; // Reset to beginning
+      audioRef.current.play().catch(error => {
+        console.warn('Could not play emergency notification sound:', error);
+      });
+    }
+  };
+
+  const stopEmergencySound = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
+
+>>>>>>> master
   // Fetch authenticated hospital data and set up real-time alert subscription
   useEffect(() => {
     let mounted = true;
@@ -86,6 +125,13 @@ const HospitalDashboard: React.FC = () => {
               gender: (p.gender === 'M' || p.gender === 'F') ? p.gender : 'M',
               status: alert.status || "incoming",
             };
+<<<<<<< HEAD
+=======
+            
+            // Play emergency notification sound for new incoming patient
+            playEmergencySound();
+            
+>>>>>>> master
             setPatients((prev) => [
               mapped,
               ...prev.filter((pt) => pt.id !== mapped.id),
@@ -153,13 +199,37 @@ const HospitalDashboard: React.FC = () => {
   };
 
   const handleRejectPatient = (patientId: string) => {
+<<<<<<< HEAD
+=======
+    // Stop emergency sound when rejecting
+    stopEmergencySound();
+    // remove the rejected patient from the list so it disappears from the dashboard
+    setPatients((prev) => prev.filter((p) => p.id !== patientId));
+    setModalOpen(false);
+    setSelectedPatient(null);
+  };
+
+  const handleAcceptPatient = (patientId: string) => {
+    // Stop emergency sound when accepting
+    stopEmergencySound();
+    // Update patient status to arrived and keep in dashboard
+    setPatients((prev) => 
+      prev.map((p) => 
+        p.id === patientId ? { ...p, status: "arrived" } : p
+      )
+    );
+>>>>>>> master
     setModalOpen(false);
     setSelectedPatient(null);
   };
 
   if (loading) {
     return (
+<<<<<<< HEAD
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+=======
+      <div className="min-h-screen bg-white text-gray-900 flex items-center justify-center">
+>>>>>>> master
         <div className="text-lg">Loading hospital dashboard...</div>
       </div>
     );
@@ -167,7 +237,11 @@ const HospitalDashboard: React.FC = () => {
 
   if (!hospital || !hospitalData) {
     return (
+<<<<<<< HEAD
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+=======
+      <div className="min-h-screen bg-white text-gray-900 flex items-center justify-center">
+>>>>>>> master
         <div className="text-lg text-red-600">
           Failed to load hospital information
         </div>
@@ -176,6 +250,7 @@ const HospitalDashboard: React.FC = () => {
   }
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-background text-foreground">
       <HospitalHeader hospital={hospital} totalPatients={patients.length} />
       <div className="ml-24 px-1 py-8">
@@ -188,20 +263,45 @@ const HospitalDashboard: React.FC = () => {
           </p>
           {hospitalData.address && (
             <p className="text-sm text-muted-foreground">
+=======
+    <div className="min-h-screen bg-white text-gray-900">
+      <HospitalHeader hospital={hospital} totalPatients={patients.length} />
+      <div className="ml-24 px-1 py-8">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold mb-2 text-gray-900">
+            Welcome, {hospitalData.name}
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Hospital Dashboard - Incoming Patients
+          </p>
+          {hospitalData.address && (
+            <p className="text-sm text-gray-600">
+>>>>>>> master
               📍 {hospitalData.address}
             </p>
           )}
           {hospitalData.contactPhone && (
+<<<<<<< HEAD
             <p className="text-sm text-muted-foreground">
+=======
+            <p className="text-sm text-gray-600">
+>>>>>>> master
               📞 {hospitalData.contactPhone}
             </p>
           )}
         </div>
 
+<<<<<<< HEAD
         <h3 className="text-xl font-semibold mb-4 text-foreground">
           Incoming Patients
         </h3>
         <p className="text-muted-foreground mb-6">
+=======
+        <h3 className="text-xl font-semibold mb-4 text-gray-900">
+          Incoming Patients
+        </h3>
+        <p className="text-gray-600 mb-6">
+>>>>>>> master
           Monitor and manage incoming emergency transfers
         </p>
         <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-6">
@@ -219,6 +319,10 @@ const HospitalDashboard: React.FC = () => {
         isOpen={modalOpen}
         onClose={handleCloseModal}
         onReject={handleRejectPatient}
+<<<<<<< HEAD
+=======
+        onAccept={handleAcceptPatient}
+>>>>>>> master
       />
     </div>
   );

@@ -29,11 +29,20 @@ const fallbackAdmission = [
   { time: '18-24', accepted: 0, rejected: 0 }
 ];
 
+<<<<<<< HEAD
 const COLORS = [
   "#2563eb", // blue (primary)
   "#e5e7eb", // light gray (secondary)
   "#f87171", // red (negative)
   "#facc15", // yellow (optional, for variety)
+=======
+// Palette: cyan for positive/primary series, red for negative/critical series
+const COLORS = [
+  "#06b6d4", // cyan-500 (primary)
+  "#e5e7eb", // light gray (secondary)
+  "#ef4444", // red-500 (negative/critical)
+  "#facc15", // yellow (optional)
+>>>>>>> master
 ];
 
 const StatCard = ({
@@ -55,14 +64,24 @@ const StatCard = ({
       <Icon className="h-4 w-4 text-primary" />
     </CardHeader>
     <CardContent>
+<<<<<<< HEAD
       <div className="text-2xl font-bold text-foreground">{value}</div>
       {trend && (
         <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
+=======
+  <div className="text-2xl font-bold text-gray-900">{value}</div>
+      {trend && (
+        <p className="text-xs text-gray-700 flex items-center gap-1 mt-1">
+>>>>>>> master
           <TrendingUp className="h-3 w-3" />
           {trend}
         </p>
       )}
+<<<<<<< HEAD
       <p className="text-xs text-muted-foreground mt-1">{description}</p>
+=======
+      <p className="text-xs text-gray-700 mt-1">{description}</p>
+>>>>>>> master
     </CardContent>
   </Card>
 );
@@ -215,11 +234,16 @@ const PatientStatistics: React.FC = () => {
   }, [alerts]);
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-white p-6">
+=======
+    <div className="min-h-screen bg-white p-6 text-gray-900">
+>>>>>>> master
       <div className="max-w-7xl mx-auto">
         <div className="space-y-8 animate-fade-in">
           {/* Header */}
           <div className="space-y-2">
+<<<<<<< HEAD
             <h1 className="text-3xl font-extrabold text-blue-700">
               Today's Patient Statistics
             </h1>
@@ -227,6 +251,15 @@ const PatientStatistics: React.FC = () => {
               Real-time overview of today's hospital patient metrics
             </p>
             {loading && <p className="text-sm text-gray-500">Loading live data...</p>}
+=======
+            <h1 className="text-3xl font-bold text-gray-900">
+              Today's Patient Statistics
+            </h1>
+            <p className="text-lg font-semibold text-cyan-600">
+              Real-time overview of today's hospital patient metrics
+            </p>
+            {loading && <p className="text-sm text-gray-700">Loading live data...</p>}
+>>>>>>> master
             {error && <p className="text-sm text-red-600">{error}</p>}
           </div>
 
@@ -257,11 +290,19 @@ const PatientStatistics: React.FC = () => {
                       strokeDasharray="3 3"
                       stroke="hsl(var(--border))"
                     />
+<<<<<<< HEAD
                     <XAxis
                       dataKey="hour"
                       stroke="hsl(var(--muted-foreground))"
                     />
                     <YAxis stroke="hsl(var(--muted-foreground))" />
+=======
+                      <XAxis
+                        dataKey="hour"
+                        stroke="#374151" /* text-gray-700 */
+                      />
+                      <YAxis stroke="#374151" />
+>>>>>>> master
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "hsl(var(--card))",
@@ -273,11 +314,19 @@ const PatientStatistics: React.FC = () => {
                     <Line
                       type="monotone"
                       dataKey="avgCriticality"
+<<<<<<< HEAD
                       stroke="hsl(var(--chart-primary))"
                       strokeWidth={3}
                       name="Avg Criticality"
                       dot={{
                         fill: "hsl(var(--chart-primary))",
+=======
+                      stroke={COLORS[0]}
+                      strokeWidth={3}
+                      name="Avg Criticality"
+                      dot={{
+                        fill: COLORS[0],
+>>>>>>> master
                         strokeWidth: 2,
                         r: 4,
                       }}
@@ -291,7 +340,11 @@ const PatientStatistics: React.FC = () => {
             <Card className="shadow-card bg-white border border-gray-200">
               <CardHeader>
                 <CardTitle className="text-black">
+<<<<<<< HEAD
                   Criticality Score Distribution
+=======
+                  Criticality Score Distribution  
+>>>>>>> master
                 </CardTitle>
                 <CardDescription>
                   Patient count by criticality ranges
@@ -306,9 +359,15 @@ const PatientStatistics: React.FC = () => {
                     />
                     <XAxis
                       dataKey="range"
+<<<<<<< HEAD
                       stroke="hsl(var(--muted-foreground))"
                     />
                     <YAxis stroke="hsl(var(--muted-foreground))" />
+=======
+                      stroke="#374151"
+                    />
+                    <YAxis stroke="#374151" />
+>>>>>>> master
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "hsl(var(--card))",
@@ -324,7 +383,11 @@ const PatientStatistics: React.FC = () => {
                       {criticalityDistribution.map((entry, index) => (
                         <Cell
                           key={`bar-cell-${index}`}
+<<<<<<< HEAD
                           fill={index === 4 ? COLORS[2] : COLORS[0]} // red for 'Critical', blue for others
+=======
+                          fill={index === 4 ? COLORS[2] : COLORS[0]} // red for 'Critical', cyan for others
+>>>>>>> master
                         />
                       ))}
                     </Bar>
@@ -358,7 +421,11 @@ const PatientStatistics: React.FC = () => {
                       {patientTypes.map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
+<<<<<<< HEAD
                           fill={index === 1 ? COLORS[2] : COLORS[0]} // red for 'Accident', blue for others
+=======
+                          fill={index % 2 === 0 ? COLORS[0] : COLORS[2]} // alternate cyan/red for clarity
+>>>>>>> master
                         />
                       ))}
                     </Pie>
@@ -393,9 +460,15 @@ const PatientStatistics: React.FC = () => {
                     />
                     <XAxis
                       dataKey="time"
+<<<<<<< HEAD
                       stroke="hsl(var(--muted-foreground))"
                     />
                     <YAxis stroke="hsl(var(--muted-foreground))" />
+=======
+                      stroke="#374151"
+                    />
+                    <YAxis stroke="#374151" />
+>>>>>>> master
                     <Tooltip
                       contentStyle={{
                         backgroundColor: "hsl(var(--card))",
@@ -407,14 +480,22 @@ const PatientStatistics: React.FC = () => {
                     <Bar
                       dataKey="accepted"
                       stackId="a"
+<<<<<<< HEAD
                       fill={COLORS[0]}
+=======
+                      fill={COLORS[0]} // cyan for accepted/positive
+>>>>>>> master
                       name="Accepted"
                       radius={[0, 0, 0, 0]}
                     />
                     <Bar
                       dataKey="rejected"
                       stackId="a"
+<<<<<<< HEAD
                       fill={COLORS[2]}
+=======
+                      fill={COLORS[2]} // red for rejected/negative
+>>>>>>> master
                       name="Rejected"
                       radius={[4, 4, 0, 0]}
                     />
@@ -436,7 +517,11 @@ const PatientStatistics: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Criticality Summary */}
                 <div className="space-y-4">
+<<<<<<< HEAD
                   <h3 className="font-semibold text-foreground border-b border-border pb-2">
+=======
+                  <h3 className="font-semibold text-gray-900 border-b border-border pb-2">
+>>>>>>> master
                     Criticality Ranges
                   </h3>
                   <div className="space-y-2">
@@ -445,10 +530,17 @@ const PatientStatistics: React.FC = () => {
                         key={item.range}
                         className="flex justify-between items-center"
                       >
+<<<<<<< HEAD
                         <span className="text-sm text-muted-foreground">
                           {item.range} ({item.severity})
                         </span>
                         <span className="font-medium text-foreground">
+=======
+                        <span className="text-sm text-gray-700">
+                          {item.range} ({item.severity})
+                        </span>
+                        <span className="font-medium text-gray-900">
+>>>>>>> master
                           {item.count}
                         </span>
                       </div>
@@ -458,7 +550,11 @@ const PatientStatistics: React.FC = () => {
 
                 {/* Patient Types Summary */}
                 <div className="space-y-4">
+<<<<<<< HEAD
                   <h3 className="font-semibold text-foreground border-b border-border pb-2">
+=======
+                  <h3 className="font-semibold text-gray-900 border-b border-border pb-2">
+>>>>>>> master
                     Patient Types
                   </h3>
                   <div className="space-y-2">
@@ -467,10 +563,17 @@ const PatientStatistics: React.FC = () => {
                         key={item.type}
                         className="flex justify-between items-center"
                       >
+<<<<<<< HEAD
                         <span className="text-sm text-muted-foreground">
                           {item.type}
                         </span>
                         <span className="font-medium text-foreground">
+=======
+                        <span className="text-sm text-gray-700">
+                          {item.type}
+                        </span>
+                        <span className="font-medium text-gray-900">
+>>>>>>> master
                           {item.count} ({item.percentage}%)
                         </span>
                       </div>
@@ -480,11 +583,16 @@ const PatientStatistics: React.FC = () => {
 
                 {/* Admission Summary */}
                 <div className="space-y-4">
+<<<<<<< HEAD
                   <h3 className="font-semibold text-foreground border-b border-border pb-2">
+=======
+                  <h3 className="font-semibold text-gray-900 border-b border-border pb-2">
+>>>>>>> master
                     Admission Status
                   </h3>
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
+<<<<<<< HEAD
                       <span className="text-sm text-muted-foreground">
                         Today's Accepted
                       </span>
@@ -501,6 +609,24 @@ const PatientStatistics: React.FC = () => {
                         Today's Acceptance Rate
                       </span>
                       <span className="font-medium text-foreground">{acceptanceRate.toFixed(1)}%</span>
+=======
+                      <span className="text-sm text-gray-700">
+                        Today's Accepted
+                      </span>
+                      <span className="font-medium text-success text-gray-900">{acceptedCount}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-700">
+                        Today's Rejected
+                      </span>
+                      <span className="font-medium text-warning text-gray-900">{rejectedCount}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-700">
+                        Today's Acceptance Rate
+                      </span>
+                      <span className="font-medium text-gray-900">{acceptanceRate.toFixed(1)}%</span>
+>>>>>>> master
                     </div>
                   </div>
                 </div>
