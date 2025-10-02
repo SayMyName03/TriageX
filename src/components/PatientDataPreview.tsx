@@ -84,15 +84,6 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
   }, [criticalityScore]);
 
   return (
-<<<<<<< HEAD
-    <Card className="w-full max-w-4xl mx-auto shadow-xl mt-8 bg-background text-foreground">
-      <CardHeader className="bg-card border-b border-border flex flex-row items-center justify-between">
-        <div>
-          <CardTitle className="text-2xl font-bold text-foreground">
-            Patient Data Preview
-          </CardTitle>
-          <p className="text-muted-foreground mt-2">
-=======
     <Card className="w-full max-w-4xl mx-auto shadow-xl mt-8">
       <CardHeader className="border-b border-gray-200 flex flex-row items-center justify-between">
         <div>
@@ -100,7 +91,6 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
             Patient Data Preview
           </CardTitle>
           <p className="text-gray-600 mt-2">
->>>>>>> master
             Please review the information before confirming submission
           </p>
         </div>
@@ -109,21 +99,6 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
       <CardContent className="p-8">
         {/* Patient Information */}
         <div className="mb-8">
-<<<<<<< HEAD
-          <h3 className="text-xl font-bold text-foreground mb-4">Patient Information</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-card p-4 rounded-lg">
-              <span className="text-sm font-semibold text-muted-foreground">Name</span>
-              <p className="text-lg font-bold text-foreground">{data.patientName || 'Not provided'}</p>
-            </div>
-            <div className="bg-card p-4 rounded-lg">
-              <span className="text-sm font-semibold text-muted-foreground">Age</span>
-              <p className="text-lg font-bold text-foreground">{data.age ? `${data.age} years` : 'Not provided'}</p>
-            </div>
-            <div className="bg-card p-4 rounded-lg">
-              <span className="text-sm font-semibold text-muted-foreground">Gender</span>
-              <p className="text-lg font-bold text-foreground">{data.gender ? formatGender(data.gender) : 'Not provided'}</p>
-=======
           <h3 className="text-xl font-bold text-gray-900 mb-4">Patient Information</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-4 rounded-lg border border-gray-100">
@@ -137,7 +112,6 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
             <div className="bg-white p-4 rounded-lg border border-gray-100">
               <span className="text-sm font-semibold text-gray-600">Gender</span>
               <p className="text-lg font-bold text-gray-900">{data.gender ? formatGender(data.gender) : 'Not provided'}</p>
->>>>>>> master
             </div>
           </div>
         </div>
@@ -146,17 +120,10 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
         <div className="mb-8">
           <h3 className="text-xl font-bold text-foreground mb-4">Vital Signs</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<<<<<<< HEAD
-            <div className="bg-card p-4 rounded-lg">
-              <span className="text-sm font-semibold text-muted-foreground">Heart Rate</span>
-              <div className="flex items-center justify-between mt-1">
-                <p className="text-lg font-bold text-foreground">
-=======
             <div className="bg-white p-4 rounded-lg border border-gray-100">
               <span className="text-sm font-semibold text-gray-600">Heart Rate</span>
               <div className="flex items-center justify-between mt-1">
                 <p className="text-lg font-bold text-gray-900">
->>>>>>> master
                   {data.heartRate ? `${data.heartRate} bpm` : 'Not provided'}
                 </p>
                 {data.heartRate && (
@@ -167,17 +134,10 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
               </div>
             </div>
 
-<<<<<<< HEAD
-            <div className="bg-card p-4 rounded-lg">
-              <span className="text-sm font-semibold text-muted-foreground">Blood Pressure</span>
-              <div className="flex items-center justify-between mt-1">
-                <p className="text-lg font-bold text-foreground">
-=======
             <div className="bg-white p-4 rounded-lg border border-gray-100">
               <span className="text-sm font-semibold text-gray-600">Blood Pressure</span>
               <div className="flex items-center justify-between mt-1">
                 <p className="text-lg font-bold text-gray-900">
->>>>>>> master
                   {data.systolicBP && data.diastolicBP 
                     ? `${data.systolicBP}/${data.diastolicBP} mmHg`
                     : 'Not provided'}
@@ -196,17 +156,10 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
               </div>
             </div>
 
-<<<<<<< HEAD
-            <div className="bg-card p-4 rounded-lg">
-              <span className="text-sm font-semibold text-muted-foreground">Temperature</span>
-              <div className="flex items-center justify-between mt-1">
-                <p className="text-lg font-bold text-foreground">
-=======
             <div className="bg-white p-4 rounded-lg border border-gray-100">
               <span className="text-sm font-semibold text-gray-600">Temperature</span>
               <div className="flex items-center justify-between mt-1">
                 <p className="text-lg font-bold text-gray-900">
->>>>>>> master
                   {data.temperature ? `${data.temperature}°C` : 'Not provided'}
                 </p>
                 {data.temperature && (
@@ -217,17 +170,10 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
               </div>
             </div>
 
-<<<<<<< HEAD
-            <div className="bg-card p-4 rounded-lg">
-              <span className="text-sm font-semibold text-muted-foreground">Oxygen Saturation</span>
-              <div className="flex items-center justify-between mt-1">
-                <p className="text-lg font-bold text-foreground">
-=======
             <div className="bg-white p-4 rounded-lg border border-gray-100">
               <span className="text-sm font-semibold text-gray-600">Oxygen Saturation</span>
               <div className="flex items-center justify-between mt-1">
                 <p className="text-lg font-bold text-gray-900">
->>>>>>> master
                   {data.oxygenSaturation ? `${data.oxygenSaturation}%` : 'Not provided'}
                 </p>
                 {data.oxygenSaturation && (
@@ -243,11 +189,7 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
         {/* Symptoms */}
         <div className="mb-8">
           <h3 className="text-xl font-bold text-foreground mb-4">Reported Symptoms</h3>
-<<<<<<< HEAD
-          <div className="bg-card p-4 rounded-lg">
-=======
           <div className="bg-white p-4 rounded-lg border border-gray-100">
->>>>>>> master
             {data.symptoms.length > 0 ? (
               <div className="flex flex-wrap gap-2">
                 {data.symptoms.map((symptom, index) => (
@@ -257,22 +199,14 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
                 ))}
               </div>
             ) : (
-<<<<<<< HEAD
-              <p className="text-muted-foreground italic">No symptoms reported</p>
-=======
               <p className="text-gray-600 italic">No symptoms reported</p>
->>>>>>> master
             )}
           </div>
         </div>
 
         {/* Criticality Score Chart (always visible on preview) */}
         <div className="flex flex-col items-center mt-10 mb-8 w-full">
-<<<<<<< HEAD
-          <h3 className="text-2xl font-bold text-foreground-800 mb-2 text-center">Criticality Score</h3>
-=======
           <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">Criticality Score</h3>
->>>>>>> master
           <div className="flex flex-col items-center justify-center w-full">
             <div style={{ width: '12rem', height: '12rem', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #e5e7eb', borderRadius: '1rem', background: '#f9fafb', marginBottom: '0.5rem' }}>
               {typeof criticalityScore === 'number' && !isNaN(criticalityScore) && criticalityScore > 0 ? (
@@ -288,11 +222,7 @@ const PatientDataPreview: React.FC<PatientDataPreviewProps> = ({ data, criticali
           <Button
             onClick={onEdit}
             variant="outline"
-<<<<<<< HEAD
-            className="h-14 px-8 text-lg font-semibold border-2 border-border text-foreground hover:bg-background rounded-xl"
-=======
             className="h-14 px-8 text-lg font-semibold border-2 border-gray-200 text-gray-900 hover:bg-gray-50 rounded-xl"
->>>>>>> master
           >
             Edit Information
           </Button>

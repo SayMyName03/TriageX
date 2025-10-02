@@ -25,17 +25,12 @@ const HospitalDashboard: React.FC = () => {
 
   const [patients, setPatients] = useState<Patient[]>([]);
   const socketRef = useRef<any>(null);
-<<<<<<< HEAD
-=======
   const audioRef = useRef<HTMLAudioElement | null>(null);
->>>>>>> master
   const [selectedPatient, setSelectedPatient] = React.useState<Patient | null>(
     null
   );
   const [modalOpen, setModalOpen] = React.useState(false);
 
-<<<<<<< HEAD
-=======
   // Initialize emergency notification sound
   useEffect(() => {
     audioRef.current = new Audio('/mixkit-urgent-simple-tone-loop-2976.wav');
@@ -68,7 +63,6 @@ const HospitalDashboard: React.FC = () => {
     }
   };
 
->>>>>>> master
   // Fetch authenticated hospital data and set up real-time alert subscription
   useEffect(() => {
     let mounted = true;
@@ -125,13 +119,10 @@ const HospitalDashboard: React.FC = () => {
               gender: (p.gender === 'M' || p.gender === 'F') ? p.gender : 'M',
               status: alert.status || "incoming",
             };
-<<<<<<< HEAD
-=======
             
             // Play emergency notification sound for new incoming patient
             playEmergencySound();
             
->>>>>>> master
             setPatients((prev) => [
               mapped,
               ...prev.filter((pt) => pt.id !== mapped.id),
@@ -199,8 +190,6 @@ const HospitalDashboard: React.FC = () => {
   };
 
   const handleRejectPatient = (patientId: string) => {
-<<<<<<< HEAD
-=======
     // Stop emergency sound when rejecting
     stopEmergencySound();
     // remove the rejected patient from the list so it disappears from the dashboard
@@ -218,18 +207,13 @@ const HospitalDashboard: React.FC = () => {
         p.id === patientId ? { ...p, status: "arrived" } : p
       )
     );
->>>>>>> master
     setModalOpen(false);
     setSelectedPatient(null);
   };
 
   if (loading) {
     return (
-<<<<<<< HEAD
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-=======
       <div className="min-h-screen bg-white text-gray-900 flex items-center justify-center">
->>>>>>> master
         <div className="text-lg">Loading hospital dashboard...</div>
       </div>
     );
@@ -237,11 +221,7 @@ const HospitalDashboard: React.FC = () => {
 
   if (!hospital || !hospitalData) {
     return (
-<<<<<<< HEAD
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-=======
       <div className="min-h-screen bg-white text-gray-900 flex items-center justify-center">
->>>>>>> master
         <div className="text-lg text-red-600">
           Failed to load hospital information
         </div>
@@ -250,20 +230,6 @@ const HospitalDashboard: React.FC = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="min-h-screen bg-background text-foreground">
-      <HospitalHeader hospital={hospital} totalPatients={patients.length} />
-      <div className="ml-24 px-1 py-8">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold mb-2 text-foreground">
-            Welcome, {hospitalData.name}
-          </h2>
-          <p className="text-muted-foreground mb-4">
-            Hospital Dashboard - Incoming Patients
-          </p>
-          {hospitalData.address && (
-            <p className="text-sm text-muted-foreground">
-=======
     <div className="min-h-screen bg-white text-gray-900">
       <HospitalHeader hospital={hospital} totalPatients={patients.length} />
       <div className="ml-24 px-1 py-8">
@@ -276,32 +242,20 @@ const HospitalDashboard: React.FC = () => {
           </p>
           {hospitalData.address && (
             <p className="text-sm text-gray-600">
->>>>>>> master
               📍 {hospitalData.address}
             </p>
           )}
           {hospitalData.contactPhone && (
-<<<<<<< HEAD
-            <p className="text-sm text-muted-foreground">
-=======
             <p className="text-sm text-gray-600">
->>>>>>> master
               📞 {hospitalData.contactPhone}
             </p>
           )}
         </div>
 
-<<<<<<< HEAD
-        <h3 className="text-xl font-semibold mb-4 text-foreground">
-          Incoming Patients
-        </h3>
-        <p className="text-muted-foreground mb-6">
-=======
         <h3 className="text-xl font-semibold mb-4 text-gray-900">
           Incoming Patients
         </h3>
         <p className="text-gray-600 mb-6">
->>>>>>> master
           Monitor and manage incoming emergency transfers
         </p>
         <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-6">
@@ -319,10 +273,7 @@ const HospitalDashboard: React.FC = () => {
         isOpen={modalOpen}
         onClose={handleCloseModal}
         onReject={handleRejectPatient}
-<<<<<<< HEAD
-=======
         onAccept={handleAcceptPatient}
->>>>>>> master
       />
     </div>
   );

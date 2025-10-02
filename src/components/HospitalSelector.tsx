@@ -65,10 +65,7 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
   const [error, setError] = useState("");
   const [maxKm, setMaxKm] = useState(10);
   const [selectedHospital, setSelectedHospital] = useState<Hospital | null>(null);
-<<<<<<< HEAD
-=======
   const [showSuccess, setShowSuccess] = useState(false);
->>>>>>> master
   const { toast } = useToast();
 
   // Get nearby hospitals using Google Places API
@@ -193,9 +190,6 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
 
   const handleConfirmSelection = () => {
     if (selectedHospital) {
-<<<<<<< HEAD
-      onHospitalSelected(selectedHospital, patientData);
-=======
       // Show success animation
       setShowSuccess(true);
       
@@ -203,13 +197,10 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
       onHospitalSelected(selectedHospital, patientData);
       
       // Show toast
->>>>>>> master
       toast({
         title: "Hospital Selected",
         description: `Alert will be sent to ${selectedHospital.name}`,
       });
-<<<<<<< HEAD
-=======
 
       // Redirect to Google Maps after 5 seconds
       setTimeout(() => {
@@ -218,7 +209,6 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
           window.location.href = directionsUrl;
         }
       }, 5000);
->>>>>>> master
     }
   };
 
@@ -231,8 +221,6 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-medical-50 via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-slate-900 p-8">
-<<<<<<< HEAD
-=======
       {/* Success Animation Overlay */}
       {showSuccess && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -262,7 +250,6 @@ const HospitalSelector: React.FC<HospitalSelectorProps> = ({
         </div>
       )}
 
->>>>>>> master
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

@@ -10,15 +10,9 @@ interface CriticalityDoughnutChartProps {
 }
 
 const getColor = (score: number) => {
-<<<<<<< HEAD
-  if (score >= 8) return "#dc2626"; // red-600
-  if (score >= 5) return "#facc15"; // yellow-400
-  return "#22c55e"; // green-500
-=======
   if (score >= 8) return "#ef4444"; // red-500
   if (score >= 5) return "#06b6d4"; // cyan-500 for moderate
   return "#06b6d4"; // cyan for normal/low in this theme
->>>>>>> master
 };
 
 const getLabel = (score: number) => {
@@ -33,13 +27,8 @@ const CriticalityDoughnutChart: React.FC<CriticalityDoughnutChartProps> = ({ sco
   const data = {
     datasets: [
       {
-<<<<<<< HEAD
-        data: [score, 10 - score],
-        backgroundColor: [color, "#e5e7eb"], // gray-200 for remainder
-=======
         data: [score, Math.max(0, 10 - score)],
         backgroundColor: [color, "#e6f6f9"], // soft cyan-ish background for remainder
->>>>>>> master
         borderWidth: 0,
         cutout: "75%",
       },
@@ -59,33 +48,21 @@ const CriticalityDoughnutChart: React.FC<CriticalityDoughnutChartProps> = ({ sco
   // Debug: show if data is invalid
   if (score === -1) {
     return (
-<<<<<<< HEAD
-      <div className="relative w-48 h-48 mx-auto my-4 flex items-center justify-center border-2 border-red-500 bg-yellow-100">
-=======
       <div className="relative w-48 h-48 mx-auto my-4 flex items-center justify-center border-2 border-red-500 bg-red-50">
->>>>>>> master
         <span className="text-red-600 font-bold">Prediction failed or model unavailable. Please try again later.</span>
       </div>
     );
   }
   if (!score || isNaN(score) || score < 0 || score > 10) {
     return (
-<<<<<<< HEAD
-      <div className="relative w-48 h-48 mx-auto my-4 flex items-center justify-center border-2 border-red-500 bg-yellow-100">
-=======
       <div className="relative w-48 h-48 mx-auto my-4 flex items-center justify-center border-2 border-red-500 bg-red-50">
->>>>>>> master
         <span className="text-red-600 font-bold">Invalid score for chart: {String(score)}</span>
       </div>
     );
   }
 
   return (
-<<<<<<< HEAD
-    <div className="relative w-48 h-48 mx-auto my-4" style={{ border: '2px solid red', background: '#fffbe6', zIndex: 100 }}>
-=======
     <div className="relative w-48 h-48 mx-auto my-4" style={{ border: '2px solid rgba(6,182,212,0.12)', background: '#f8feff', zIndex: 100 }}>
->>>>>>> master
       <Doughnut data={data} options={options} />
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
         <span className="text-3xl font-bold" style={{ color }}>{score}/10</span>
